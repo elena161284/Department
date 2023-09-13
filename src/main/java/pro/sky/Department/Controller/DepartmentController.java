@@ -22,11 +22,11 @@ public class DepartmentController {
     }
     //locahost:8080/department/10/max/salary
     @GetMapping("{deptId}/salary/max")
-    public Employee max(@PathVariable int deptId) {
+    public double max(@PathVariable int deptId) {
         return service.maxSalary(deptId);
     }
     @GetMapping("{deptId}/salary/min")
-    public Employee min(@PathVariable int deptId) {
+    public double min(@PathVariable int deptId) {
         return service.minSalary(deptId);
     }
     @GetMapping("{deptId}/employees")

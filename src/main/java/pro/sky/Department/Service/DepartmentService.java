@@ -20,18 +20,20 @@ public class DepartmentService {
     }
 
 
-    public Employee maxSalary(int deptId) {
+    public double maxSalary(int deptId) {
         return employeeService.getAll()
                 .stream()
                 .filter(e -> e.getDepartment() == deptId)
-                .max(Comparator.comparingDouble(Employee::getSalary))
+                .map(Employee::getSalary)
+                .max(Comparator.comparingDouble(o->o))
                 .orElseThrow(EmployeeNotFoundException::new);
     }
-    public Employee minSalary(int deptId) {
+    public double minSalary(int deptId) {
         return employeeService.getAll()
                 .stream()
                 .filter(e -> e.getDepartment() == deptId)
-                .min(Comparator.comparingDouble(Employee::getSalary))
+                .map(Employee::getSalary)
+                .min(Comparator.comparingDouble(o->o))
                 .orElseThrow(EmployeeNotFoundException::new);
     }
     public List<Employee> findAllByDept(int deptId) {
