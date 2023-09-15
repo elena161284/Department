@@ -3,10 +3,9 @@ package pro.sky.Department.Controller;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.Department.Employee;
 import pro.sky.Department.Service.DepartmentService;
-import pro.sky.Department.Employee;
-import pro.sky.Department.Service.DepartmentService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/department")
@@ -34,7 +33,7 @@ public class DepartmentController {
         return service.findAllByDept(deptId);
     }
     @GetMapping("/employees")
-    public List<Employee> group(@PathVariable int deptId) {
+    public Map<Integer, List<Employee>> group(@PathVariable int deptId) {
         return service.groupDeDept();
     }
 }

@@ -43,11 +43,11 @@ public class DepartmentService {
                 .collect(Collectors.toList());
     }
 
-    public List<Employee> groupDeDept() {
+    public Map<Integer, List<Employee>>  groupDeDept() {
         Map<Integer, List<Employee>> map = employeeService.getAll()
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
-        return null;
+        return map;
     }
 
     public double sum(int deptId) {
